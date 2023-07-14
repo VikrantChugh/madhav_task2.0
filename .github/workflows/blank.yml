@@ -1,17 +1,9 @@
 name: workflow_02
-on: 
-  workflow_run:
-    workflows: ["workflow_01"]
-    types:
-      - completed
+on: [repository_dispatch]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Triggering Wokflow 2"
       - name: Checkout
-        uses: actions/checkout@v3
-        with: 
-          repository: VikrantChugh/madhav_task2
-          ref: 'main'
-          token: ${{ secrets.TOKEN_GITHUB }}
+        uses: actions/checkout@v2
